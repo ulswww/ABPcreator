@@ -5,3 +5,4 @@
 4 替换所有文件中 AbpProjectName
 5 修改项目名称 AbpProjectName..WebSpaAngular 为 Web
 6 创建成功后打开目录
+
