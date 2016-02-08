@@ -35,11 +35,11 @@
             // 
             // btn_createAbp
             // 
-            this.btn_createAbp.Location = new System.Drawing.Point(443, 135);
+            this.btn_createAbp.Location = new System.Drawing.Point(387, 135);
             this.btn_createAbp.Name = "btn_createAbp";
-            this.btn_createAbp.Size = new System.Drawing.Size(70, 27);
+            this.btn_createAbp.Size = new System.Drawing.Size(126, 27);
             this.btn_createAbp.TabIndex = 0;
-            this.btn_createAbp.Text = "创建";
+            this.btn_createAbp.Text = "Create Project";
             this.btn_createAbp.UseVisualStyleBackColor = true;
             this.btn_createAbp.Click += new System.EventHandler(this.btn_createAbp_Click);
             // 
