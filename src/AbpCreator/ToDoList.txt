@@ -1,8 +1,0 @@
-﻿1 目录要有abp template
-1 替换所有文件夹 AbpCompanyName.AbpProjectName
-2 替换所有文件名中的 AbpCompanyName.AbpProjectName
-3 替换所有文件中包好 AbpCompanyName.AbpProjectName
-4 替换所有文件中 AbpProjectName
-5 修改项目名称 AbpProjectName..WebSpaAngular 为 Web
-6 创建成功后打开目录
-
