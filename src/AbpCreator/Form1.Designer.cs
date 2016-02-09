@@ -31,11 +31,13 @@
             this.btn_createAbp = new System.Windows.Forms.Button();
             this.txt_projectName = new System.Windows.Forms.TextBox();
             this.lb_ProjectName = new System.Windows.Forms.Label();
+            this.txt_generatePath = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_createAbp
             // 
-            this.btn_createAbp.Location = new System.Drawing.Point(387, 135);
+            this.btn_createAbp.Location = new System.Drawing.Point(387, 181);
             this.btn_createAbp.Name = "btn_createAbp";
             this.btn_createAbp.Size = new System.Drawing.Size(126, 27);
             this.btn_createAbp.TabIndex = 0;
@@ -59,11 +61,29 @@
             this.lb_ProjectName.TabIndex = 2;
             this.lb_ProjectName.Text = "项目名称";
             // 
+            // txt_generatePath
+            // 
+            this.txt_generatePath.Location = new System.Drawing.Point(140, 127);
+            this.txt_generatePath.Name = "txt_generatePath";
+            this.txt_generatePath.Size = new System.Drawing.Size(373, 21);
+            this.txt_generatePath.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(48, 130);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "生成目录";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(551, 194);
+            this.ClientSize = new System.Drawing.Size(548, 240);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txt_generatePath);
             this.Controls.Add(this.lb_ProjectName);
             this.Controls.Add(this.txt_projectName);
             this.Controls.Add(this.btn_createAbp);
@@ -79,6 +99,8 @@
         private System.Windows.Forms.Button btn_createAbp;
         private System.Windows.Forms.TextBox txt_projectName;
         private System.Windows.Forms.Label lb_ProjectName;
+        private System.Windows.Forms.TextBox txt_generatePath;
+        private System.Windows.Forms.Label label1;
     }
 }
 

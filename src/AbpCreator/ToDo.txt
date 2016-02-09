@@ -4,4 +4,5 @@
 3 替换所有文件中包好 AbpCompanyName.AbpProjectName
 4 替换所有文件中 AbpProjectName
 5 创建成功后打开目录
+6 指定项目的所在目录
 

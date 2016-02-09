@@ -35,12 +35,42 @@ namespace AbpCreator
 
         private void btn_createAbp_Click(object sender, EventArgs e)
         {
-            CreateProject(_projectPath,txt_projectName.Text);
+            TryThis(CreateProject);
         }
 
-        private void CreateProject(string projectPath, string projectName)
+        public void TryThis(Action action)
         {
-            var targetPath = Path.Combine(Application.StartupPath, projectName);
+            try
+            {
+                action.Invoke();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void CreateProject()
+        {
+            AssertInput();
+            CreateProject(_projectPath, txt_projectName.Text, txt_generatePath.Text);
+        }
+
+        private void AssertInput()
+        {
+            if(string.IsNullOrEmpty(txt_projectName.Text))
+                throw new Exception("请输入项目名称");
+
+            if (string.IsNullOrEmpty(txt_generatePath.Text))
+                throw new Exception("请输入生成目录");
+        }
+
+        private void CreateProject(string projectPath, string projectName, string generatePath)
+        {
+            EnsureDirecotory(generatePath);
+
+            var targetPath = Path.Combine(generatePath, projectName);
 
             DirectoryCopy(projectPath, targetPath,true);
 
@@ -54,7 +84,15 @@ namespace AbpCreator
 
             _fileNameHelper.ReplaceFileName(targetPath, SourceProjectName, projectName);
 
-            Process.Start(Application.StartupPath);
+            Process.Start(generatePath);
+        }
+
+        private static void EnsureDirecotory(string generatePath)
+        {
+            if (!Directory.Exists(generatePath))
+            {
+                Directory.CreateDirectory(generatePath);
+            }
         }
 
         private static void DirectoryCopy(
