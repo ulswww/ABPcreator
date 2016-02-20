@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 
 namespace AbpCreator
@@ -34,6 +35,7 @@ namespace AbpCreator
 
         private void ChangeFileName(string sourcePath, string targetPath)
         {
+            Console.WriteLine(sourcePath +"   0000 "+targetPath);
             File.Move(sourcePath, targetPath);
         }
 

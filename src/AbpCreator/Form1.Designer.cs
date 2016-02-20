@@ -33,6 +33,10 @@
             this.lb_ProjectName = new System.Windows.Forms.Label();
             this.txt_generatePath = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.txt_prefix_company = new System.Windows.Forms.TextBox();
+            this.txt_prefix_project = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_createAbp
@@ -77,11 +81,47 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "生成目录";
             // 
+            // txt_prefix_company
+            // 
+            this.txt_prefix_company.Location = new System.Drawing.Point(140, 22);
+            this.txt_prefix_company.Name = "txt_prefix_company";
+            this.txt_prefix_company.Size = new System.Drawing.Size(100, 21);
+            this.txt_prefix_company.TabIndex = 5;
+            // 
+            // txt_prefix_project
+            // 
+            this.txt_prefix_project.Location = new System.Drawing.Point(263, 22);
+            this.txt_prefix_project.Name = "txt_prefix_project";
+            this.txt_prefix_project.Size = new System.Drawing.Size(135, 21);
+            this.txt_prefix_project.TabIndex = 6;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(246, 25);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(11, 12);
+            this.label2.TabIndex = 7;
+            this.label2.Text = ".";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(48, 31);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(71, 12);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "公司.项目名";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(548, 240);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txt_prefix_project);
+            this.Controls.Add(this.txt_prefix_company);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txt_generatePath);
             this.Controls.Add(this.lb_ProjectName);
@@ -101,6 +141,10 @@
         private System.Windows.Forms.Label lb_ProjectName;
         private System.Windows.Forms.TextBox txt_generatePath;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txt_prefix_company;
+        private System.Windows.Forms.TextBox txt_prefix_project;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
 

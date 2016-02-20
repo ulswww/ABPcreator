@@ -19,9 +19,10 @@ namespace AbpCreator
         private readonly FileNameHelper _fileNameHelper;
         private readonly FileContentHelper _fileContentHelper;
 
-        private const string SourceName = "AbpCompanyName.AbpProjectName";
+        private  string SourceName = "MyCompanyName.AbpZeroTemplate";
 
-        private const string SourceProjectName = "AbpProjectName";
+        private  string SourceProjectName = "AbpZeroTemplate";
+        private  string MyCompanyName = "MyCompanyName";
         public Form1()
         {
             InitializeComponent();
@@ -31,6 +32,12 @@ namespace AbpCreator
             _fileNameHelper = new FileNameHelper();
 
             _fileContentHelper = new FileContentHelper();
+
+            txt_prefix_company.Text = MyCompanyName;
+            txt_prefix_project.Text = SourceProjectName;
+
+            txt_generatePath.Text = Application.StartupPath;
+
         }
 
         private void btn_createAbp_Click(object sender, EventArgs e)
@@ -54,6 +61,9 @@ namespace AbpCreator
         private void CreateProject()
         {
             AssertInput();
+
+            SourceName = txt_prefix_company.Text + "." + txt_prefix_project.Text;
+            SourceProjectName = txt_prefix_project.Text;
             CreateProject(_projectPath, txt_projectName.Text, txt_generatePath.Text);
         }
 
@@ -72,13 +82,14 @@ namespace AbpCreator
 
             var targetPath = Path.Combine(generatePath, projectName);
 
-            DirectoryCopy(projectPath, targetPath,true);
+            DirectoryHelper. DirectoryCopy(projectPath, targetPath,true);
 
             _fileContentHelper.ReplaceName(targetPath, SourceName, projectName);
 
             _fileContentHelper.ReplaceName(targetPath, SourceProjectName, projectName);
 
             _directoryHelper.ReplaceDirectoryName(targetPath, SourceName,projectName);
+            _directoryHelper.ReplaceDirectoryName(targetPath, SourceProjectName, projectName);
 
             _fileNameHelper.ReplaceFileName(targetPath, SourceName,projectName);
 
@@ -95,52 +106,6 @@ namespace AbpCreator
             }
         }
 
-        private static void DirectoryCopy(
-       string sourceDirName, string destDirName, bool copySubDirs)
-        {
-            DirectoryInfo dir = new DirectoryInfo(sourceDirName);
-            DirectoryInfo[] dirs = dir.GetDirectories();
-
-            // If the source directory does not exist, throw an exception.
-            if (!dir.Exists)
-            {
-                throw new DirectoryNotFoundException(
-                    "Source directory does not exist or could not be found: "
-                    + sourceDirName);
-            }
-
-            // If the destination directory does not exist, create it.
-            if (!Directory.Exists(destDirName))
-            {
-                Directory.CreateDirectory(destDirName);
-            }
-
-
-            // Get the file contents of the directory to copy.
-            FileInfo[] files = dir.GetFiles();
-
-            foreach (FileInfo file in files)
-            {
-                // Create the path to the new copy of the file.
-                string temppath = Path.Combine(destDirName, file.Name);
-
-                // Copy the file.
-                file.CopyTo(temppath, false);
-            }
-
-            // If copySubDirs is true, copy the subdirectories.
-            if (copySubDirs)
-            {
-
-                foreach (DirectoryInfo subdir in dirs)
-                {
-                    // Create the subdirectory.
-                    string temppath = Path.Combine(destDirName, subdir.Name);
-
-                    // Copy the subdirectories.
-                    DirectoryCopy(subdir.FullName, temppath, copySubDirs);
-                }
-            }
-        }
+     
     }
 }
