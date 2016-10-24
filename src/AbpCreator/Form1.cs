@@ -62,7 +62,15 @@ namespace AbpCreator
         {
             AssertInput();
 
-            SourceName = txt_prefix_company.Text + "." + txt_prefix_project.Text;
+            if (!string.IsNullOrEmpty(txt_prefix_company.Text))
+            {
+                SourceName = txt_prefix_company.Text + "." + txt_prefix_project.Text;
+            }
+            else
+            {
+                SourceName = txt_prefix_project.Text;
+            }
+           
             SourceProjectName = txt_prefix_project.Text;
             CreateProject(_projectPath, txt_projectName.Text, txt_generatePath.Text);
         }
