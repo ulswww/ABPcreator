@@ -37,11 +37,13 @@
             this.txt_prefix_project = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txt_Src = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btn_createAbp
             // 
-            this.btn_createAbp.Location = new System.Drawing.Point(387, 181);
+            this.btn_createAbp.Location = new System.Drawing.Point(404, 260);
             this.btn_createAbp.Name = "btn_createAbp";
             this.btn_createAbp.Size = new System.Drawing.Size(126, 27);
             this.btn_createAbp.TabIndex = 0;
@@ -51,7 +53,7 @@
             // 
             // txt_projectName
             // 
-            this.txt_projectName.Location = new System.Drawing.Point(140, 66);
+            this.txt_projectName.Location = new System.Drawing.Point(157, 145);
             this.txt_projectName.Name = "txt_projectName";
             this.txt_projectName.Size = new System.Drawing.Size(373, 21);
             this.txt_projectName.TabIndex = 1;
@@ -59,7 +61,7 @@
             // lb_ProjectName
             // 
             this.lb_ProjectName.AutoSize = true;
-            this.lb_ProjectName.Location = new System.Drawing.Point(48, 69);
+            this.lb_ProjectName.Location = new System.Drawing.Point(65, 148);
             this.lb_ProjectName.Name = "lb_ProjectName";
             this.lb_ProjectName.Size = new System.Drawing.Size(53, 12);
             this.lb_ProjectName.TabIndex = 2;
@@ -67,7 +69,7 @@
             // 
             // txt_generatePath
             // 
-            this.txt_generatePath.Location = new System.Drawing.Point(140, 127);
+            this.txt_generatePath.Location = new System.Drawing.Point(157, 206);
             this.txt_generatePath.Name = "txt_generatePath";
             this.txt_generatePath.Size = new System.Drawing.Size(373, 21);
             this.txt_generatePath.TabIndex = 3;
@@ -75,7 +77,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(48, 130);
+            this.label1.Location = new System.Drawing.Point(65, 209);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 12);
             this.label1.TabIndex = 4;
@@ -83,14 +85,14 @@
             // 
             // txt_prefix_company
             // 
-            this.txt_prefix_company.Location = new System.Drawing.Point(140, 22);
+            this.txt_prefix_company.Location = new System.Drawing.Point(157, 101);
             this.txt_prefix_company.Name = "txt_prefix_company";
             this.txt_prefix_company.Size = new System.Drawing.Size(100, 21);
             this.txt_prefix_company.TabIndex = 5;
             // 
             // txt_prefix_project
             // 
-            this.txt_prefix_project.Location = new System.Drawing.Point(263, 22);
+            this.txt_prefix_project.Location = new System.Drawing.Point(280, 101);
             this.txt_prefix_project.Name = "txt_prefix_project";
             this.txt_prefix_project.Size = new System.Drawing.Size(135, 21);
             this.txt_prefix_project.TabIndex = 6;
@@ -98,7 +100,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(246, 25);
+            this.label2.Location = new System.Drawing.Point(263, 104);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(11, 12);
             this.label2.TabIndex = 7;
@@ -107,17 +109,35 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(48, 31);
+            this.label3.Location = new System.Drawing.Point(65, 110);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(71, 12);
             this.label3.TabIndex = 8;
             this.label3.Text = "公司.项目名";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(65, 54);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(23, 12);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "src";
+            // 
+            // txt_Src
+            // 
+            this.txt_Src.Location = new System.Drawing.Point(157, 51);
+            this.txt_Src.Name = "txt_Src";
+            this.txt_Src.Size = new System.Drawing.Size(373, 21);
+            this.txt_Src.TabIndex = 9;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(548, 240);
+            this.ClientSize = new System.Drawing.Size(617, 331);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txt_Src);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txt_prefix_project);
@@ -145,6 +165,8 @@
         private System.Windows.Forms.TextBox txt_prefix_project;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txt_Src;
     }
 }
 

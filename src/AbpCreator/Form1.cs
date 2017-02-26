@@ -37,11 +37,12 @@ namespace AbpCreator
             txt_prefix_project.Text = SourceProjectName;
 
             txt_generatePath.Text = Application.StartupPath;
-
+            txt_Src.Text = _projectPath;
         }
 
         private void btn_createAbp_Click(object sender, EventArgs e)
         {
+            _projectPath= Path.Combine(Application.StartupPath, txt_Src.Text);
             TryThis(CreateProject);
         }
 
@@ -86,9 +87,15 @@ namespace AbpCreator
 
         private void CreateProject(string projectPath, string projectName, string generatePath)
         {
+          
             EnsureDirecotory(generatePath);
 
             var targetPath = Path.Combine(generatePath, projectName);
+
+            if (Directory.Exists(targetPath))
+            {
+                Directory.Delete(targetPath, true);
+            }
 
             DirectoryHelper. DirectoryCopy(projectPath, targetPath,true);
 

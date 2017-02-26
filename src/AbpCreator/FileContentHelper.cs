@@ -1,4 +1,5 @@
 using System;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -21,48 +22,61 @@ namespace AbpCreator
            
             foreach (var file in Directory.GetFiles(sourcePath).Where(f=>Fit(f, ".cs", ".sln", ".csproj", ".cshtml", ".config", ".xml", ".txt", ".js", ".asax", ".bat")))
             {
-                
-                var content = File.ReadAllText(file, GetFileEncodeType(file));
 
-                if (content.Contains(sourceName))
+                long length = new System.IO.FileInfo(file).Length;
+
+                if (length > 0)
                 {
-                    content = content.Replace(sourceName, targetName);
+                    var content = File.ReadAllText(file, GetFileEncodeType(file));
 
-                    File.WriteAllText(file, content, Encoding.UTF8);
+                    if (content.Contains(sourceName))
+                    {
+                        content = content.Replace(sourceName, targetName);
+
+                        File.WriteAllText(file, content, Encoding.UTF8);
+                    }
+
                 }
+
 
             }
 
         }
 
-        public System.Text.Encoding GetFileEncodeType(string filename)
+        public Encoding GetFileEncodeType(string filename)
         {
-            System.IO.FileStream fs = new System.IO.FileStream(filename, System.IO.FileMode.Open, System.IO.FileAccess.Read);
-            System.IO.BinaryReader br = new System.IO.BinaryReader(fs);
-            Byte[] buffer = br.ReadBytes(2);
-            if (buffer[0] >= 0xEF)
+            using (FileStream fs = new FileStream(filename, FileMode.Open,
+                    FileAccess.Read))
             {
-                if (buffer[0] == 0xEF && buffer[1] == 0xBB)
+                BinaryReader br = new BinaryReader(fs);
+                Byte[] buffer = br.ReadBytes(2);
+
+               
+                if (buffer[0] >= 0xEF)
                 {
-                    return System.Text.Encoding.UTF8;
-                }
-                else if (buffer[0] == 0xFE && buffer[1] == 0xFF)
-                {
-                    return System.Text.Encoding.BigEndianUnicode;
-                }
-                else if (buffer[0] == 0xFF && buffer[1] == 0xFE)
-                {
-                    return System.Text.Encoding.Unicode;
+                    if (buffer[0] == 0xEF && buffer[1] == 0xBB)
+                    {
+                        return Encoding.UTF8;
+                    }
+                    else if (buffer[0] == 0xFE && buffer[1] == 0xFF)
+                    {
+                        return Encoding.BigEndianUnicode;
+                    }
+                    else if (buffer[0] == 0xFF && buffer[1] == 0xFE)
+                    {
+                        return Encoding.Unicode;
+                    }
+                    else
+                    {
+                        return Encoding.Default;
+                    }
                 }
                 else
                 {
-                    return System.Text.Encoding.Default;
+                    return Encoding.Default;
                 }
             }
-            else
-            {
-                return System.Text.Encoding.Default;
-            }
+
         }
 
         private bool Fit(string s,params string[] extensions)
