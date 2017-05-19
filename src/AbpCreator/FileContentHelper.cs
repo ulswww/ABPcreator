@@ -14,13 +14,14 @@ namespace AbpCreator
 
         public void ReplaceName(string sourcePath, string sourceName, string targetName)
         {
+            StringReplacePattern pattern = new StringReplacePattern(sourceName, targetName);
 
             if (!Directory.Exists(sourcePath))
                 return;
 
             MapSubDirectory(sourcePath, sourceName, targetName);
            
-            foreach (var file in Directory.GetFiles(sourcePath).Where(f=>Fit(f, ".cs", ".sln", ".csproj", ".cshtml", ".config", ".xml", ".txt", ".js", ".asax", ".bat")))
+            foreach (var file in Directory.GetFiles(sourcePath).Where(f=>Fit(f, ".cs", ".sln", ".csproj", ".cshtml", ".config", ".xml", ".txt", ".js", ".asax", ".bat",".json",".sql",".tt",".edmx",".html")))
             {
 
                 long length = new System.IO.FileInfo(file).Length;
@@ -29,12 +30,19 @@ namespace AbpCreator
                 {
                     var content = File.ReadAllText(file, GetFileEncodeType(file));
 
-                    if (content.Contains(sourceName))
-                    {
-                        content = content.Replace(sourceName, targetName);
+                    string targetContent;
 
-                        File.WriteAllText(file, content, Encoding.UTF8);
+                    if (pattern.MatchAndReplace(content, out targetContent))
+                    {
+                        File.WriteAllText(file, targetContent, Encoding.UTF8);
                     }
+
+                    //if (content.Contains(sourceName))
+                    //{
+                    //    content = content.Replace(sourceName, targetName);
+
+                    //    File.WriteAllText(file, content, Encoding.UTF8);
+                    //}
 
                 }
 

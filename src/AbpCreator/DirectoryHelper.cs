@@ -12,30 +12,40 @@ namespace AbpCreator
 
         public  void ReplaceDirectoryName(string sourcePath, string sourceName, string targetName)
         {
+            StringReplacePattern pattern =new StringReplacePattern(sourceName,targetName);
 
-            if(! Directory.Exists(sourcePath))
+            if (! Directory.Exists(sourcePath))
                 return;
 
 
             ReplaceSubDirectory(sourcePath, sourceName, targetName);
 
-            var shortName = Path.GetFileName(sourcePath);
-
+            var shortName =   Path.GetFileName(sourcePath);
+      
             if (shortName == null)
                 return;
 
-            if (shortName.Contains(sourceName))
+            string targetDirectoryName;
+
+            if (pattern.MatchAndReplace(shortName, out targetDirectoryName))
             {
                 var root = Path.GetDirectoryName(sourcePath);
 
-                var shortDirectoryName = Path.GetFileName(sourcePath);
-                var targetDirectoryName = shortDirectoryName.Replace(sourceName, targetName);
-                if (sourcePath.Contains("Localization"))
-                {
-                    int i = 2;
-                }
-                ChangeDirectoryName(sourcePath, Path.Combine(root,targetDirectoryName));
+                ChangeDirectoryName(sourcePath, Path.Combine(root, targetDirectoryName));
             }
+
+            //if (shortName.Contains(sourceName))
+            //{
+            //    var root = Path.GetDirectoryName(sourcePath);
+
+            //    var shortDirectoryName = Path.GetFileName(sourcePath);
+            //    var targetDirectoryName = shortDirectoryName.Replace(sourceName, targetName);
+            //    if (sourcePath.Contains("Localization"))
+            //    {
+            //        int i = 2;
+            //    }
+            //    ChangeDirectoryName(sourcePath, Path.Combine(root,targetDirectoryName));
+            //}
         }
 
         private void ChangeDirectoryName(string sourcePath, string targetPath)

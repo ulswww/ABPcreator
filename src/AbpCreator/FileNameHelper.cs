@@ -11,6 +11,8 @@ namespace AbpCreator
 
         public void ReplaceFileName(string sourcePath, string sourceName, string targetName)
         {
+   
+            var pattern =new StringReplacePattern(sourceName,targetName);
 
             if (!Directory.Exists(sourcePath))
                 return;
@@ -19,16 +21,32 @@ namespace AbpCreator
 
             foreach (var file in Directory.GetFiles(sourcePath))
             {
-                var shortName = Path.GetFileName(file);
-                if(shortName==null)
-                    continue;
-
-                if (shortName.Contains(sourceName))
+                    string replace=null;
+                try
                 {
-                    var targetPath = file.Replace(sourceName, targetName);
+                    var shortName = Path.GetFileName(file);
+                    if (shortName == null)
+                        continue;
 
-                    ChangeFileName(file, targetPath);
+                    if (pattern.MatchAndReplace(file, out replace))
+                    {
+                        ChangeFileName(file, replace);
+                    }
                 }
+                catch (Exception ex)
+                {
+
+                    throw new Exception(string.Format("{0}-{1}:{2}",sourceName, replace, file),ex);
+                }
+
+
+
+                //if (shortName.Contains(sourceName))
+                //{
+                //    var targetPath = file.Replace(sourceName, targetName);
+
+                //    ChangeFileName(file, targetPath);
+                //}
             }
 
         }

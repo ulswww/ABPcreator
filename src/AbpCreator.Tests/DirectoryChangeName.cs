@@ -20,5 +20,16 @@ namespace AbpCreator.Tests
             //DirectoryHelper.DirectoryCopy(sourcePath,targetPath,true);
             Assert.IsTrue(Directory.Exists("Taa\\Taa\\Taa"));
         }
+        [Test]
+        public void Should_Match()
+        {
+            StringReplacePattern pattern =new StringReplacePattern("Himall","gxB2b");
+
+            string g = @"'himall_xxx'\r\n'HImalL.GGG  himall'";
+            string replace = null;
+            pattern.MatchAndReplace(g, out replace);
+
+            Console.WriteLine(replace);
+        }
     }
 }
